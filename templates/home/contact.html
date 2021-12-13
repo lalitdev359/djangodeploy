@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Contact us{% endblock title %}
+{% block content %}
+<div class="container">
+    <h1>Contact MySite Admin</h1>
+    <form method="post" action="/contact">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" class="form-control" aria-describedby="name">
+            </div>
+        <div class="form-group">
+
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="user">Username</label>
+          <input type="text" class="form-control" id="user" name="username">
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="phone" class="form-control" id="phone" name="contact">
+        </div>
+        <div class="form-group">
+          <label for="content">Describe your issue:</label>
+          <textarea class="form-control" name="message" id="content" cols="30" rows="6"></textarea>
+        </div>
+       
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</div>
+{% endblock content%}

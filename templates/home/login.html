@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+ {% block mycss%}<style>
+        
+        .loginimage{
+        margin: 0 auto;
+        
+        height: 200px;
+
+        }
+        .loginimage img{
+        width: 200px;
+        height: 200px;
+        }
+        .maindiv{
+        background: linear-gradient(90deg, rgba(54,217,182,1) 0%, rgba(32,152,126,1) 43%, rgba(0,212,255,1) 100%);
+        width: 100%;
+        margin: 0 auto;
+        height: 400px;
+        padding: 40px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        }
+        .loginform form{
+        width: 100%;
+        margin: auto;
+        padding: 40px;
+        padding-bottom: 0px;
+        border-bottom: 1px solid #e9e9e9;
+        background-color: #fff;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+        
+        
+        }
+        .loginform form input{
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-right: 50px;
+        padding-left: 5px;
+        }
+        #loginbtn{
+        padding: 10px 50px;
+        margin: 20px auto;
+        width: 80%;
+        background: orangered;
+        font-weight: bold;
+        }
+    </style>{%endblock mycss%}
+{% block content %}
+
+<div class='container'>
+<div class='row'>
+<div class='col'>
+<form action='login' method='POST'>
+{% csrf_token %}
+
+{% if request.GET.next %}
+<input type="hidden" name="next" value="{{request.GET.next}}">
+{% endif %}
+<div>
+                               
+                                
+                                <label><span> Enter Username</span><input type="text" name="username"></label>
+                            </div>
+                            <div>
+                                
+                                
+                                <label><span>Enter Password<input type="password" name="password"></span></label>
+                                        </div>
+                                        <div>
+                                            
+                                            <button id="loginbtn" type="submit">LOGIN</button>
+                                        </div>
+</form>
+</div>
+</div>
+</div>
+<h3>Request object attributes</h3>
+<ul>
+<li>{{ request.scheme }}</li>
+<li>{{ request.method }}</li>
+<li>{{ request.path }}</li>
+<li>{{ request.GET }}</li>
+<li>{{ request.POST }}</li>
+<li>{{ request.user }}</li>
+</ul>
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+<div class="row">
+<div class="col">
+<div>
+<h2>{{post.title}}</h2>
+<button id="btn" onclick="hideshowimg()">Hide Image</button>
+</div>
+<img id="imgid" src="{{post.img.url}}">
+<span>Author: {{post.author}}</span>
+<span> | Category: {{post.category}}</span>
+<p>{{post.desc|safe}}</p>
+</div>
+</div>
+</div>
+<script>
+var image=document.getElementById('imgid');
+function hideshowimg(){
+    image.classList.toggle('imgclass');
+}
+</script>
+{% endblock content %}

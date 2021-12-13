@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block mycss%}<style>
+        
+    input{
+        padding: 5px 25px;
+    }
+    form p{
+        
+    
+        margin-bottom: -1px;
+    
+    }
+    #p1,#p2,#p3{
+margin-left: 185px;
+width: 130px;
+padding:4px 0px;
+}
+#p4{
+margin-left: 170px;
+padding:4px 0px;
+        width: 120px;
+    }
+#p5{
+margin-left: 189px;
+padding:4px 0px;
+        width: 120px;
+        
+    }
+#p6{
+margin-left: 204px;
+padding:4px 0px;
+        width: 160px;
+    
+        
+    }
+    #p2,#p3,#p4,#p5,#p6{
+        margin-top: 3px;
+    }
+    .formbtn{
+        margin-top: 30px;
+        margin-bottom: 10px;
+
+    }
+    .formbtn input{
+        font-weight: bold;
+        font-size: 20px;
+        padding: 7px 110px;
+        background-color: green;
+        
+            border-radius: 20%;
+            color: white;
+    }
+
+</style>{%endblock mycss%}
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+
+        <div class="container" style="width: 70%; margin:auto;padding:30px; text-align:center">
+            
+            
+            <form action="register" method="POST">
+                {% csrf_token %}
+                {% if request.GET.next %}
+                <input type="hidden" name="next" value="{{request.GET.next}}">
+                {% endif %}
+                <p id="p1">First Name</p>
+                <input type="text" name="first_name" placeholder="First Name">
+                <p id="p2">Last Name</p>
+                <input type="text" name="last_name" placeholder="Last Name">
+                <p id="p3">Username</p>
+                <input type="text" name="username" placeholder="Username">
+                <p id="p4">Email</p>
+                <input type="email" name="email" placeholder="Email Address">
+                <p id="p5">Password</p>
+                <input type="password" name="password1" placeholder="Password">
+                <p id="p6">Confirm Password</p>
+                <input type="password" name="password2" placeholder="Confirm Password">
+                <div class="formbtn">
+                    
+                    <input type="submit">
+                </div>
+            </form>
+            
+        </div>
+    </div>
+    </div>
+    <div>
+
+    <h3>Request object attributes</h3>
+    <ul>
+    <li>{{ request.scheme }}</li>
+    <li>{{ request.method }}</li>
+    <li>{{ request.path }}</li>
+    <li>{{ request.GET }}</li>
+    <li>{{ request.POST }}</li>
+    <li>{{ request.user }}</li>
+    </ul>
+
+
+{% endblock content %}
